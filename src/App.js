@@ -11,14 +11,11 @@ class App extends Component {
   }
 
 	onTaskChange(delta, index) {
+		let {tasks} = this.state;
 		console.log('onTaskChange', index, delta);
 
-		this.state.tasks[index].done = true;
-		this.setState(this.state);
-
-		/*this.setState((prevState, props, index) => ({
-			tasks: prevState.tasks[index],
-		}));*/
+		tasks[index].done = true;
+		this.setState({tasks});
 	}
 
   render() {
