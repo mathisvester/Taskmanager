@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './components/Header';
 import Task from './components/Task';
 import AddTaskForm from './components/AddTaskForm';
+import EditTaskForm from './components/EditTaskForm';
 
 class App extends Component {
 	constructor(props) {
@@ -11,10 +12,14 @@ class App extends Component {
 			tasks: this.props.initialTasks,
 			completedTasks: this.props.intialCompletedTasks,
 			removedTasks: this.props.intialRemovedTasks,
-			nextId: this.props.nextId
+			nextId: this.props.nextId,
+			taskEdit: {},
+			displayEditTaskForm: this.props.displayEditTaskForm,
+			taskIndex: 0,
 		};
 		this.onTaskChange = this.onTaskChange.bind(this);
 		this.onTaskEdit = this.onTaskEdit.bind(this);
+		this.onTaskSave = this.onTaskSave.bind(this);
 		this.onTaskRemove = this.onTaskRemove.bind(this);
 		this.onTaskComplete = this.onTaskComplete.bind(this);
 		this.onTaskAdd = this.onTaskAdd.bind(this);
@@ -25,7 +30,14 @@ class App extends Component {
 	}
 
 	onTaskEdit(index) {
-		console.log("onTaskEdit", index);
+		this.setState({taskEdit: this.state.tasks[index], displayEditTaskForm: true, taskIndex: index});
+	}
+
+	onTaskSave(index, savedTask) {
+		let task = this.state.tasks[index];
+		task = savedTask;
+		this.setState(task);
+		this.setState({displayEditTaskForm: false});
 	}
 
 	onTaskRemove(index) {
@@ -60,6 +72,8 @@ class App extends Component {
 	}
 
   render() {
+		const displayEditTaskForm = this.state.displayEditTaskForm;
+
     return (
       <div className="App">
 				<Header title={this.props.title} description={this.props.description} tasks={this.state.tasks} />
@@ -77,6 +91,7 @@ class App extends Component {
 					}.bind(this))}
 				</ol>
 				<AddTaskForm onAdd={this.onTaskAdd} />
+				{ displayEditTaskForm ? <EditTaskForm task={this.state.taskEdit} index={this.state.taskIndex} onSave={(index, savedTask) => this.onTaskSave(index, savedTask)} onEdit={this.onTaskEdit} /> : null}
       </div>
     );
   }
@@ -104,11 +119,13 @@ App.propTypes = {
 		removed: PropTypes.bool.isRequired,
 	})),
 	nextId: PropTypes.number.isRequired,
+	displayEditTaskForm: PropTypes.bool.isRequired,
 };
 
 App.defaultProps = {
 	title: "My first react app",
 	description: "Tasks to do:",
+	displayEditTaskForm: false,
 };
 
 export default App;
