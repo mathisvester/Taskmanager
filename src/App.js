@@ -17,7 +17,7 @@ class App extends Component {
 			displayEditTaskForm: this.props.displayEditTaskForm,
 			taskIndex: 0,
 		};
-		this.onTaskChange = this.onTaskChange.bind(this);
+		//this.onTaskChange = this.onTaskChange.bind(this);
 		this.onTaskEdit = this.onTaskEdit.bind(this);
 		this.onTaskSave = this.onTaskSave.bind(this);
 		this.onTaskRemove = this.onTaskRemove.bind(this);
@@ -25,9 +25,9 @@ class App extends Component {
 		this.onTaskAdd = this.onTaskAdd.bind(this);
   }
 
-	onTaskChange(action, index) {
+	/*onTaskChange(action, index) {
 		console.log('onTaskChange', index, action);
-	}
+	}*/
 
 	onTaskEdit(index) {
 		this.setState({taskEdit: this.state.tasks[index], displayEditTaskForm: true, taskIndex: index});
@@ -38,6 +38,8 @@ class App extends Component {
 		task = savedTask;
 		this.setState(task);
 		this.setState({displayEditTaskForm: false});
+
+		localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
 	}
 
 	onTaskRemove(index) {
@@ -46,6 +48,9 @@ class App extends Component {
 		this.state.removedTasks.push(tasks[index]);
 		this.state.tasks.splice(index, 1);
 		this.setState({tasks});
+
+		localStorage.setItem('removedTasks', JSON.stringify(this.state.removedTasks));
+		localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
 	}
 
 	onTaskComplete(index) {
@@ -54,6 +59,9 @@ class App extends Component {
 		this.state.completedTasks.push(tasks[index]);
 		this.state.tasks.splice(index, 1);
 		this.setState({tasks});
+
+		localStorage.setItem('completedTasks', JSON.stringify(this.state.completedTasks));
+		localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
 	}
 
 	onTaskAdd(title) {
@@ -69,6 +77,10 @@ class App extends Component {
 		this.setState((prevState) => {
 			return {nextId: prevState.nextId + 1};
 		});
+
+		localStorage.setItem('nextId', JSON.stringify(this.state.nextId));
+		localStorage.setItem('tasks', JSON.stringify(this.state.tasks));
+		//localStorage.clear();
 	}
 
   render() {
