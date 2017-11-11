@@ -1,0 +1,22 @@
+//
+// Type
+// --------------------------------------------------
+
+.panel {
+	background: @panel-bg;
+	border: 1px solid @panel-border;
+	border-radius: 4px;
+	padding: @padding-l @padding-l;
+
+	& + .panel {
+		margin-top: @padding-m;
+	}
+}
+
+.panel__title {
+	color: @gray;
+	font-weight: @font-weight-medium;
+	font-size: @font-size-small + 2;
+	margin-bottom: 8px;
+	display: block;
+}

@@ -1,0 +1,39 @@
+//
+// Buttons
+// --------------------------------------------------
+
+.btn {
+	.btn-size(@font-size-base, @btn-padding-vertical, @btn-padding-horizontal, @line-height-base);
+	.tab-focus();
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: @btn-border-radius;
+	white-space: nowrap;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	font-family: @font-family-base;
+}
+
+.btn--xs {
+	.btn-size(@font-size-small, @btn-padding-vertical-xs, @btn-padding-horizontal-xs, @line-height-base);
+	border-radius: @btn-border-radius-xs;
+}
+
+.btn--primary {
+	.btn--success;
+}
+
+.btn--info {
+	.btn-variant(transparent, @brand-info, @brand-info, @brand-info, #fff, @brand-info);
+}
+
+.btn--warning {
+	.btn-variant(transparent, @brand-warning, @brand-warning, @brand-warning, #fff, @brand-warning);
+}
+
+.btn--success {
+	.btn-variant(transparent, @brand-success, @brand-success, @brand-success, #fff, @brand-success);
+}

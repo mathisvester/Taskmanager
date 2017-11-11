@@ -5,8 +5,8 @@ import TaskActions from './TaskActions';
 class Task extends Component {
 	render() {
 		return(
-			<li className="task">
-				<span className="task-title">{this.props.name}</span>
+			<li className="list__item clearfix">
+				<span className="list__title float--left-sm text--darker">{this.props.name}</span>
 				<TaskActions onChange={this.props.onTaskChange} onEdit={this.props.onTaskEdit} onRemove={this.props.onTaskRemove} onComplete={this.props.onTaskComplete}/>
 			</li>
 		);

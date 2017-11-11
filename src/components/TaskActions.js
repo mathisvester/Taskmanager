@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 class TaskActions extends Component {
 	render() {
 		return(
-			<div className="task-actions">
-				<button className="task-action edit" onClick={this.props.onEdit}>Edit</button>
-				<button className="task-action remove" onClick={this.props.onRemove}>Remove</button>
-				<button className="task-action complete" onClick={this.props.onComplete}>Complete</button>
+			<div className="list__actions btn-group float--right-sm">
+				<button className="list__btn btn btn--info btn--xs btn--edit" onClick={this.props.onEdit}>Edit</button>
+				<button className="list__btn btn btn--warning btn--xs btn--remove" onClick={this.props.onRemove}>Remove</button>
+				<button className="list__btn btn btn--success btn--xs btn--complete" onClick={this.props.onComplete}>Complete</button>
 			</div>
 		);
 	}

@@ -1,0 +1,76 @@
+//
+// Helper
+// --------------------------------------------------
+
+// Clearfix
+// ----
+
+.clearfix {
+	&::before,
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+// Float
+// ----
+.float--left {
+	float: left;
+}
+
+.float--left-xs {
+	@media(max-width: @viewport-xs) { float: left; }
+}
+
+.float--left-sm {
+	@media(min-width: @viewport-sm) { float: left; }
+}
+
+.float--left-md {
+	@media(min-width: @viewport-md) { float: left; }
+}
+
+.float--left-lg {
+	@media(min-width: @viewport-lg) { float: left; }
+}
+
+.float--right {
+	float: left;
+}
+
+.float--right-xs {
+	@media(max-width: @viewport-xs) { float: right; }
+}
+
+.float--right-sm {
+	@media(min-width: @viewport-sm) { float: right; }
+}
+
+.float--right-md {
+	@media(min-width: @viewport-md) { float: right; }
+}
+
+.float--right-lg {
+	@media(min-width: @viewport-lg) { float: right; }
+}
+
+.float--reset {
+	float: none;
+}
+
+// Text
+// ----
+
+.text--darker {
+	color: @gray-dark;
+}
+
+.text--small {
+	font-size: @font-size-small;
+}
+
+.text--large {
+	font-size: @font-size-large;
+}

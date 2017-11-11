@@ -1,0 +1,34 @@
+//
+// Lists
+// --------------------------------------------------
+
+.list--unstyled {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.list--trenner {
+	.list__item {
+		padding-top: @padding-m;
+		padding-bottom: @padding-m;
+	}
+
+	.list__item + .list__item {
+		border-top: 1px solid @gray-light;
+	}
+
+	.list__item:first-child {
+		padding-top: 0;
+	}
+
+	.list__item:last-child {
+		padding-bottom: 0;
+	}
+
+	.list__title {
+		padding-top: 4px;
+		padding-bottom: 4px;
+		display: block;
+	}
+}

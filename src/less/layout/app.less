@@ -1,0 +1,22 @@
+//
+// App
+// --------------------------------------------------
+
+.app {
+	padding-left: @padding-l;
+	padding-right: @padding-l;
+	padding-top: 8vh;
+	padding-bottom: 8vh;
+
+	.app__header,
+	.app__content,
+	.app__footer {
+		padding-top: @padding-l;
+		padding-bottom: @padding-l;
+	}
+
+	@media(min-width: @viewport-sm) {
+		max-width: 580px;
+		margin: 0 auto;
+	}
+}

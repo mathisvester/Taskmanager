@@ -87,31 +87,47 @@ class App extends Component {
 		const displayEditTaskForm = this.state.displayEditTaskForm;
 
     return (
-      <div className="App">
-				<Header title={this.props.title} description={this.props.description} tasks={this.state.tasks} />
-				<ol className="tasks">
-					{this.state.tasks.map(function(task, index){
-						return(
-							<Task
-								onTaskChange={(action) => this.onTaskChange(action, index)}
-								onTaskEdit={() => this.onTaskEdit(index)}
-								onTaskRemove={() => this.onTaskRemove(index)}
-								onTaskComplete={() => this.onTaskComplete(index)}
-								name={task.name}
-								key={task.id} />
-						);
-					}.bind(this))}
-				</ol>
-				<AddTaskForm onAdd={this.onTaskAdd} />
-				{ displayEditTaskForm ? <EditTaskForm task={this.state.taskEdit} index={this.state.taskIndex} onSave={(index, savedTask) => this.onTaskSave(index, savedTask)} onEdit={this.onTaskEdit} /> : null}
-      </div>
+      <div className="app">
+				<Header salutation={this.props.salutation} title={this.props.title} tasks={this.state.tasks} />
+				<div className="app__content">
+					<div className="panel">
+						<ul className="list list--unstyled list--trenner">
+							{this.state.tasks.map(function(task, index){
+								return(
+									<Task
+										onTaskChange={(action) => this.onTaskChange(action, index)}
+										onTaskEdit={() => this.onTaskEdit(index)}
+										onTaskRemove={() => this.onTaskRemove(index)}
+										onTaskComplete={() => this.onTaskComplete(index)}
+										name={task.name}
+										key={task.id} />
+								);
+							}.bind(this))}
+						</ul>
+					</div>
+				</div>
+				<div className="app__footer">
+					{displayEditTaskForm ?
+						<div className="panel">
+							<span className="panel__title">Edit task</span>
+							<EditTaskForm task={this.state.taskEdit} index={this.state.taskIndex} onSave={(index, savedTask) => this.onTaskSave(index, savedTask)} onEdit={this.onTaskEdit} maxTitleLength={this.props.maxTaskTitleLength}/>
+						</div>
+						: null
+					}
+
+					<div className="panel">
+						<span className="panel__title">Add new task</span>
+						<AddTaskForm onAdd={this.onTaskAdd} maxTitleLength={this.props.maxTaskTitleLength} />
+					</div>
+				</div>
+			</div>
     );
   }
 }
 
 App.propTypes = {
+	salutation: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	description: PropTypes.string.isRequired,
 	initialTasks: PropTypes.arrayOf(PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		id: PropTypes.number.isRequired,
@@ -132,12 +148,14 @@ App.propTypes = {
 	})),
 	nextId: PropTypes.number.isRequired,
 	displayEditTaskForm: PropTypes.bool.isRequired,
+	maxTaskTitleLength: PropTypes.number.isRequired,
 };
 
 App.defaultProps = {
-	title: "My first react app",
-	description: "Tasks to do:",
+	salutation: "Hi!",
+	title: "I'm your personal Task Manager.",
 	displayEditTaskForm: false,
+	maxTaskTitleLength: 80,
 };
 
 export default App;

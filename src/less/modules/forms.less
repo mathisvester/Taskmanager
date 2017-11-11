@@ -1,0 +1,84 @@
+//
+// Forms
+// --------------------------------------------------
+
+.placeholder(lighten(@gray, 25%));
+
+.form__control {
+	.tab-focus();
+	.input-size(@input-height, @font-size-base, @btn-padding-vertical,  @btn-padding-horizontal, @line-height-base);
+	background: @input-bg;
+	border: 1px solid @input-border;
+	border-radius: @input-border-radius;
+	display: block;
+
+	&:focus {
+		border-color: @input-border-color-focus;
+	}
+
+	&--xs {
+		.input-size(@input-height-xs, @font-size-small, @input-padding-vertical-xs,  @input-padding-horizontal-xs, @line-height-base);
+		border-radius: @input-border-radius-xs;
+	}
+}
+
+.form__group--inline {
+	display: inline-block;
+}
+
+.form__group--inline + input[type="submit"] {
+	margin-left: @padding-s;
+}
+
+.input-group {
+	position: relative;
+	display: table;
+	border-collapse: separate;
+
+	.form__control {
+		display: table-cell;
+		//position: relative;
+		//z-index: 2;
+		float: left;
+		width: 100%;
+
+		&:first-child {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		&:last-child {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+
+	.input-group__btn {
+		font-size: 0;
+		white-space: nowrap;
+		width: 1%;
+		white-space: nowrap;
+		vertical-align: middle;
+		display: table-cell;
+
+		&:first-child .btn {
+		  margin-right: -1px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+
+		&:last-child .btn {
+		  margin-left: -1px;
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+}
+
+.form__control__helper {
+	text-align: right;
+	color: @gray-lighter;
+	font-size: @font-size-small;
+	margin-top: @padding-m;
+	display: block;
+}

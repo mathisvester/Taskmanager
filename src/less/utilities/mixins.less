@@ -1,0 +1,57 @@
+//
+// Mixins
+// --------------------------------------------------
+
+.btn-size(@font-size, @padding-vertical, @padding-horizontal, @line-height) {
+	font-size: @font-size;
+	padding: @padding-vertical @padding-horizontal;
+	line-height: @line-height;
+}
+
+.btn-variant(@bg, @color, @border-color, @bg-hover, @color-hover, @border-color-hover) {
+	.tab-focus(@border-color);
+	background-color: @bg;
+	color: @color;
+	border-color: @border-color;
+
+	&:hover,
+	&:focus {
+		background-color: @bg-hover;
+		color: @color-hover;
+		border-color: @border-color-hover;
+	}
+}
+
+.input-size(@height, @font-size, @padding-vertical, @padding-horizontal, @line-height) {
+	font-size: @font-size;
+	padding: @padding-vertical @padding-horizontal;
+	line-height: @line-height;
+	height: @height;
+}
+
+.tab-focus(@shadow-color: @tab-focus-box-shadow-color, @shadow-opacity: 30%) {
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 0.2em fade(@shadow-color, @shadow-opacity);
+	}
+}
+
+.placeholder(@color) {
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: @color;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	   color: @color;
+	   opacity:  1;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	   color: @color;
+	   opacity:  1;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	   color: @color;
+	}
+	::-ms-input-placeholder { /* Microsoft Edge */
+	   color: @color;
+	}
+}
