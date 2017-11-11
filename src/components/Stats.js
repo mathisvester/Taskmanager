@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class Stats extends Component {
 	render() {
 		var totalOpenTasks = this.props.tasks.reduce(function(total, task) {
-			(!task.done && !task.removed) ? total++ : total += 0;
+			total ++;
 			return total;
 		}, 0);
 

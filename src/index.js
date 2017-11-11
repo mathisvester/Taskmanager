@@ -30,7 +30,23 @@ var TASKS = [
 		removed: false,
 	},
 ];
+var COMPLETEDTASKS = [
+	{
+		name: "Completed task",
+		id: 1,
+		done: true,
+		removed: false,
+	}
+];
+var REMOVEDTASKS = [
+	{
+		name: "Removed task",
+		id: 1,
+		done: false,
+		removed: true,
+	}
+];
 var nextId = 5;
 
-ReactDOM.render(<App initialTasks={TASKS} nextId={nextId} />, document.getElementById('root'));
+ReactDOM.render(<App initialTasks={TASKS} intialCompletedTasks={COMPLETEDTASKS} intialRemovedTasks={REMOVEDTASKS} nextId={nextId} />, document.getElementById('root'));
 registerServiceWorker();

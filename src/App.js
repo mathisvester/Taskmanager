@@ -7,7 +7,12 @@ import AddTaskForm from './components/AddTaskForm';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {tasks: this.props.initialTasks, nextId: this.props.nextId};
+		this.state = {
+			tasks: this.props.initialTasks,
+			completedTasks: this.props.intialCompletedTasks,
+			removedTasks: this.props.intialRemovedTasks,
+			nextId: this.props.nextId
+		};
 		this.onTaskChange = this.onTaskChange.bind(this);
 		this.onTaskEdit = this.onTaskEdit.bind(this);
 		this.onTaskRemove = this.onTaskRemove.bind(this);
@@ -24,16 +29,18 @@ class App extends Component {
 	}
 
 	onTaskRemove(index) {
-		console.log("onTaskRemove", index);
 		let {tasks} = this.state;
 		tasks[index].removed = true;
+		this.state.removedTasks.push(tasks[index]);
+		this.state.tasks.splice(index, 1);
 		this.setState({tasks});
 	}
 
 	onTaskComplete(index) {
-		console.log("onTaskComplete", index);
 		let {tasks} = this.state;
 		tasks[index].done = true;
+		this.state.completedTasks.push(tasks[index]);
+		this.state.tasks.splice(index, 1);
 		this.setState({tasks});
 	}
 
@@ -55,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-				<Header title={this.props.title} tasks={this.state.tasks} />
+				<Header title={this.props.title} description={this.props.description} tasks={this.state.tasks} />
 				<ol className="tasks">
 					{this.state.tasks.map(function(task, index){
 						return(
@@ -65,8 +72,6 @@ class App extends Component {
 								onTaskRemove={() => this.onTaskRemove(index)}
 								onTaskComplete={() => this.onTaskComplete(index)}
 								name={task.name}
-								done={task.done}
-								removed={task.removed}
 								key={task.id} />
 						);
 					}.bind(this))}
@@ -79,17 +84,31 @@ class App extends Component {
 
 App.propTypes = {
 	title: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired,
 	initialTasks: PropTypes.arrayOf(PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		id: PropTypes.number.isRequired,
 		done: PropTypes.bool.isRequired,
 		removed: PropTypes.bool.isRequired,
 	})).isRequired,
+	intialCompletedTasks: PropTypes.arrayOf(PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		id: PropTypes.number.isRequired,
+		done: PropTypes.bool.isRequired,
+		removed: PropTypes.bool.isRequired,
+	})),
+	intialRemovedTasks: PropTypes.arrayOf(PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		id: PropTypes.number.isRequired,
+		done: PropTypes.bool.isRequired,
+		removed: PropTypes.bool.isRequired,
+	})),
 	nextId: PropTypes.number.isRequired,
 };
 
 App.defaultProps = {
-	title: "My first react app"
+	title: "My first react app",
+	description: "Tasks to do:",
 };
 
 export default App;

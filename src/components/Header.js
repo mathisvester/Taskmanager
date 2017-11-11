@@ -8,7 +8,7 @@ class Header extends React.Component {
 			<div className="header">
 				<h1>{this.props.title}</h1>
 				<Stats tasks={this.props.tasks} />
-				<h2>Tasks to do:</h2>
+				<h2>{this.props.description}</h2>
 			</div>
 		);
 	}
@@ -16,6 +16,7 @@ class Header extends React.Component {
 
 Header.propTypes = {
 	title: PropTypes.string.isRequired,
+	description: PropTypes.string.isRequired,
 	tasks: PropTypes.array.isRequired,
 };
 
