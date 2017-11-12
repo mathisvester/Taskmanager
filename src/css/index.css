@@ -448,10 +448,10 @@ template {
   color: #212121;
 }
 .text--small {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .text--large {
-  font-size: 16px;
+  font-size: 1.15rem;
 }
 *,
 ::after,
@@ -464,27 +464,48 @@ body {
   background: #F5F5F5;
   color: #616161;
   font-family: 'Barlow', sans-serif;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.5;
   box-sizing: border-box;
 }
 .app {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 8vh;
-  padding-bottom: 8vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .app .app__header,
 .app .app__content,
 .app .app__footer {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.app .app__title {
+  margin-top: 0;
 }
 @media (min-width: 767px) {
   .app {
-    max-width: 580px;
+    max-width: 38rem;
     margin: 0 auto;
   }
+}
+h1 {
+  font-size: 2.9rem;
+}
+h2 {
+  font-size: 2.4rem;
+}
+h3 {
+  font-size: 1.8rem;
+}
+h4 {
+  font-size: 1.15rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.75rem;
 }
 h1,
 h2,
@@ -495,12 +516,20 @@ h6 {
   color: #212121;
   line-height: 1.2;
 }
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  font-size: 0.8em;
+}
 h1,
 h2,
 h3 {
   font-weight: 400;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 h4,
 h5,
@@ -511,8 +540,8 @@ h4,
 h5,
 h6,
 p {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 strong,
 bold {
@@ -528,8 +557,8 @@ bold {
   margin-right: 2px;
 }
 .btn {
-  font-size: 14px;
-  padding: 8px 12px;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
   line-height: 1.5;
   cursor: pointer;
   background-image: none;
@@ -547,8 +576,8 @@ bold {
   box-shadow: 0 0 0 0.2em rgba(33, 136, 255, 0.3);
 }
 .btn--xs {
-  font-size: 12px;
-  padding: 4px 8px;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.5rem;
   line-height: 1.5;
   border-radius: 2px;
 }
@@ -635,10 +664,10 @@ bold {
   color: #a1a1a1;
 }
 .form__control {
-  font-size: 14px;
-  padding: 8px 12px;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
   line-height: 1.5;
-  height: 39px;
+  height: 2.625rem;
   background: #fff;
   border: 1px solid #E0E0E0;
   border-radius: 4px;
@@ -652,17 +681,17 @@ bold {
   border-color: #2188ff;
 }
 .form__control--xs {
-  font-size: 12px;
-  padding: 4px 8px;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.5rem;
   line-height: 1.5;
-  height: 28px;
+  height: 1.85rem;
   border-radius: 2px;
 }
 .form__group--inline {
   display: inline-block;
 }
 .form__group--inline + input[type="submit"] {
-  margin-left: 5px;
+  margin-left: 0.3rem;
 }
 .input-group {
   position: relative;
@@ -689,6 +718,12 @@ bold {
   vertical-align: middle;
   display: table-cell;
 }
+.input-group .input-group__btn .btn {
+  height: 2.625rem;
+}
+.input-group .input-group__btn .btn--xs {
+  height: 1.85rem;
+}
 .input-group .input-group__btn:first-child .btn {
   margin-right: -1px;
   border-top-right-radius: 0;
@@ -702,8 +737,8 @@ bold {
 .form__control__helper {
   text-align: right;
   color: #a1a1a1;
-  font-size: 12px;
-  margin-top: 10px;
+  font-size: 0.75rem;
+  margin-top: 0.6rem;
   display: block;
 }
 .list--unstyled {
@@ -712,8 +747,8 @@ bold {
   margin: 0;
 }
 .list--trenner .list__item {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 .list--trenner .list__item + .list__item {
   border-top: 1px solid #E0E0E0;
@@ -725,23 +760,43 @@ bold {
   padding-bottom: 0;
 }
 .list--trenner .list__title {
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: .2rem;
+  padding-bottom: .2rem;
   display: block;
+}
+.list--tasks .list__item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+.list--tasks .list__item .list__title {
+  -webkit-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  padding-right: 0.6rem;
+}
+.list--tasks .list__item .list__actions {
+  -webkit-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
 }
 .panel {
   background: #fff;
   border: 1px solid #E0E0E0;
   border-radius: 4px;
-  padding: 15px 15px;
+  padding: 1rem 1rem;
 }
 .panel + .panel {
-  margin-top: 10px;
+  margin-top: 0.6rem;
 }
 .panel__title {
   color: #616161;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1rem;
   margin-bottom: 8px;
   display: block;
 }

@@ -27,8 +27,24 @@
 	}
 
 	.list__title {
-		padding-top: 4px;
-		padding-bottom: 4px;
+		padding-top: .2rem;
+		padding-bottom: .2rem;
 		display: block;
+	}
+}
+
+.list--tasks {
+	.list__item {
+		.flex-display();
+		.flex-flow(row nowrap);
+
+		.list__title {
+			.flex-grow(1);
+			padding-right: @padding-m;
+		}
+
+		.list__actions {
+			.flex-shrink(0);
+		}
 	}
 }

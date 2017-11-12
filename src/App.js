@@ -17,17 +17,12 @@ class App extends Component {
 			displayEditTaskForm: this.props.displayEditTaskForm,
 			taskIndex: 0,
 		};
-		//this.onTaskChange = this.onTaskChange.bind(this);
 		this.onTaskEdit = this.onTaskEdit.bind(this);
 		this.onTaskSave = this.onTaskSave.bind(this);
 		this.onTaskRemove = this.onTaskRemove.bind(this);
 		this.onTaskComplete = this.onTaskComplete.bind(this);
 		this.onTaskAdd = this.onTaskAdd.bind(this);
   }
-
-	/*onTaskChange(action, index) {
-		console.log('onTaskChange', index, action);
-	}*/
 
 	onTaskEdit(index) {
 		this.setState({taskEdit: this.state.tasks[index], displayEditTaskForm: true, taskIndex: index});
@@ -84,28 +79,32 @@ class App extends Component {
 	}
 
   render() {
-		const displayEditTaskForm = this.state.displayEditTaskForm;
+		const displayEditTaskForm = this.state.displayEditTaskForm,
+					displayTaskList = ((this.state.tasks.length) === 0 ? false : true);
 
     return (
       <div className="app">
 				<Header salutation={this.props.salutation} title={this.props.title} tasks={this.state.tasks} />
-				<div className="app__content">
-					<div className="panel">
-						<ul className="list list--unstyled list--trenner">
-							{this.state.tasks.map(function(task, index){
-								return(
-									<Task
-										onTaskChange={(action) => this.onTaskChange(action, index)}
-										onTaskEdit={() => this.onTaskEdit(index)}
-										onTaskRemove={() => this.onTaskRemove(index)}
-										onTaskComplete={() => this.onTaskComplete(index)}
-										name={task.name}
-										key={task.id} />
-								);
-							}.bind(this))}
-						</ul>
+				{displayTaskList ?
+					<div className="app__content">
+						<div className="panel">
+							<ul className="list list--unstyled list--trenner list--tasks">
+								{this.state.tasks.map(function(task, index){
+									return(
+										<Task
+											onTaskChange={(action) => this.onTaskChange(action, index)}
+											onTaskEdit={() => this.onTaskEdit(index)}
+											onTaskRemove={() => this.onTaskRemove(index)}
+											onTaskComplete={() => this.onTaskComplete(index)}
+											name={task.name}
+											key={task.id} />
+									);
+								}.bind(this))}
+							</ul>
+						</div>
 					</div>
-				</div>
+					: null
+				}
 				<div className="app__footer">
 					{displayEditTaskForm ?
 						<div className="panel">
@@ -114,7 +113,6 @@ class App extends Component {
 						</div>
 						: null
 					}
-
 					<div className="panel">
 						<span className="panel__title">Add new task</span>
 						<AddTaskForm onAdd={this.onTaskAdd} maxTitleLength={this.props.maxTaskTitleLength} />

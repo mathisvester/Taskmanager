@@ -20,9 +20,9 @@
 // ----
 
 @font-family-base: 'Barlow', sans-serif;
-@font-size-base: 14px;
-@font-size-small: @font-size-base - 2;
-@font-size-large: @font-size-base + 2;
+@font-size-base: 1rem;
+@font-size-small:	.75rem;
+@font-size-large: 1.15rem;
 
 @font-weight-normal: 400;
 @font-weight-medium: 500;
@@ -34,10 +34,10 @@
 // Padding
 // ----
 
-@padding-s: 5px;
-@padding-m: 10px;
-@padding-l: 15px;
-@padding-xl: 20px;
+@padding-s: .3rem;
+@padding-m: .6rem;
+@padding-l: 1rem;
+@padding-xl: 1.25rem;
 
 
 // Viewports
@@ -54,11 +54,11 @@
 // Buttons
 // ----
 
-@btn-padding-vertical: 8px;
-@btn-padding-horizontal: 12px;
+@btn-padding-vertical: .5rem;
+@btn-padding-horizontal: .75rem;
 
-@btn-padding-vertical-xs: 4px;
-@btn-padding-horizontal-xs: 8px;
+@btn-padding-vertical-xs: .30rem;
+@btn-padding-horizontal-xs: .5rem;
 
 @btn-border-radius: 4px;
 @btn-border-radius-xs: 2px;
@@ -74,8 +74,8 @@
 // Forms
 // ----
 
-@input-height: ceil(@font-size-base * @line-height-base) + @btn-padding-vertical*2 + 2;
-@input-height-xs: ceil(@font-size-small * @line-height-base) + @btn-padding-vertical-xs*2 + 2;
+@input-height: @font-size-base*@line-height-base + @btn-padding-vertical*2 + 0.125rem;
+@input-height-xs: @font-size-small*@line-height-base + @btn-padding-vertical-xs*2 + 0.125rem;
 
 @input-padding-vertical: @btn-padding-vertical;
 @input-padding-horizontal: @btn-padding-horizontal;

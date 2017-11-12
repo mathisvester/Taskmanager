@@ -37,8 +37,6 @@
 
 	.form__control {
 		display: table-cell;
-		//position: relative;
-		//z-index: 2;
 		float: left;
 		width: 100%;
 
@@ -60,6 +58,9 @@
 		white-space: nowrap;
 		vertical-align: middle;
 		display: table-cell;
+
+		.btn { height: @input-height; }
+		.btn--xs { height: @input-height-xs; }
 
 		&:first-child .btn {
 		  margin-right: -1px;

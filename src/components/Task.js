@@ -6,7 +6,7 @@ class Task extends Component {
 	render() {
 		return(
 			<li className="list__item clearfix">
-				<span className="list__title float--left-sm text--darker">{this.props.name}</span>
+				<span className="list__title text--darker">{this.props.name}</span>
 				<TaskActions onChange={this.props.onTaskChange} onEdit={this.props.onTaskEdit} onRemove={this.props.onTaskRemove} onComplete={this.props.onTaskComplete}/>
 			</li>
 		);

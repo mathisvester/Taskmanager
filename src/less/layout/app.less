@@ -5,8 +5,8 @@
 .app {
 	padding-left: @padding-l;
 	padding-right: @padding-l;
-	padding-top: 8vh;
-	padding-bottom: 8vh;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
 
 	.app__header,
 	.app__content,
@@ -15,8 +15,12 @@
 		padding-bottom: @padding-l;
 	}
 
+	.app__title {
+		margin-top: 0;
+	}
+
 	@media(min-width: @viewport-sm) {
-		max-width: 580px;
+		max-width: 38rem;
 		margin: 0 auto;
 	}
 }
